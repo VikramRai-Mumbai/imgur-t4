@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Image Uploading</title>
+</head>
+
+<body>
+	<h1>To Upload Image </h1>
+	<hr>
+	<div>
+		<form action="/uploadNew" method="POST" enctype="multipart/form-data">
+			<div>
+				<label for="name">Image Description</label>
+				<input type="text" id="desc" placeholder="Description"
+					value="" name="desc" required>
+			</div>
+						<div>
+				<label for="image">Upload Image</label>
+				<input type="file" id="image"
+					name="image" value="" required>
+			</div>
+			<div>
+				<button type="submit">Submit</button>
+			</div>
+		</form>
+	</div>
+
+	<hr>
+
+	
+</body>
+
+</html>

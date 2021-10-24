@@ -1,0 +1,29 @@
+.card-style {
+  /* background-color: deeppink; */
+  background-color: #fff;
+  border-radius: 15px;
+}
+
+
+.like:a {
+  text-decoration: none;
+  color: black;
+}
+.like {
+
+  border-radius: 10px;
+  margin: 40px;
+  display: inline-flex;
+  height: auto;
+  width: auto;
+  font-size: 65px;
+  background-color: #99CC00;
+  border: 2px solid white;
+  color: white;
+  transition: all 0.2s linear 0s;
+}
+
+.like:hover {
+  background-color: white !important;
+  color: #99CC00;
+}
