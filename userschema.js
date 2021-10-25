@@ -1,12 +1,26 @@
 var mongoose=require('mongoose');
+const validator=require('validator');
 const moment = require('moment-timezone');
 const dateAsia = moment.tz(Date.now(), "Asia/Kolkata");  
 
 var UserSchema = new mongoose.Schema({
     UserId:Number,
     Name:String,
-    Email:String,
-    Mobile:Number,
+    Email:{
+        type:String,
+        required:true,
+        unique:true,
+        validate(value){ 
+            if(!validator.isEmail(value)){
+                 throw new Error("Email is invalid"); 
+            }
+        }
+          },
+    Mobile:{
+        type:Number,
+        required:true,
+        unique:true
+        },
     Password:String,
     Birthday:Date,
     Address:String,

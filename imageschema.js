@@ -10,6 +10,7 @@ var ImageSchema = new mongoose.Schema({
     },
     ImageDesc:String,
     LikedCount:Number,
+    DisLikedCount:Number,
     CommentCount:Number,
     PostCount:Number,
     isDeleted:String,

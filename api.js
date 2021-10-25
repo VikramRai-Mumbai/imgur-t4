@@ -6,7 +6,6 @@ var UserModel = require('./userschema');
 require('dotenv/config');
   
 // Connecting to database
-mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGO_DB_URL, { useNewUrlParser : true, 
 useUnifiedTopology: true }, function(error) {
     if (error) {

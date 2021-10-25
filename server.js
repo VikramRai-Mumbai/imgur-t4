@@ -80,11 +80,13 @@ app.post('/register/new', function(req, res) {
     });
   newUser.save(function(err, data) {
       if(err) {
-          console.log(error);
+        res.send("Registration failed");
+          console.log(err); 
       }
       else {
-          res.send("Registered Successfully.");
-          setTimeout(res.redirect('/login'), 3000); 
+          console.log("User Added Successfully.");
+          res.send("User Added Successfully.");
+          
       }
   });
 });
@@ -206,10 +208,11 @@ let upload = multer({
 app.post('/uploadNew', upload.single('image'), (req, res) => {
 
   var obj = {
-    ImageID:501,
+    ImageId:501,
     LikedCount:0,
+    DisLikedCount:0,
     CommentCount:0,
-    PostedByUserID:101,
+    PostedByUserID:102,
     PostedOn:dateAsia,
     ImageDesc: req.body.desc,
     ImageData: {
@@ -227,4 +230,43 @@ ImageModel.create(obj, (err, item) => {
         res.redirect('/');
     }
 });
+});
+
+// Delete User
+app.get('/user/delete', function(req, res) {
+  UserModel.remove({UserId:101}, 
+  function(err, data) {
+      if(err){
+          console.log(err);
+      }
+      else{
+          res.send(data);
+      }
+  });  
+});
+
+// Delete 
+app.get('/post/delete', function(req, res) {
+  ImageModel.remove({ImageId:501}, 
+  function(err, data) {
+      if(err){
+          console.log(err);
+      }
+      else{
+          res.send(data);
+      }
+  });  
+});
+// Delete by findByIdAndDelete
+app.post('/delete', function(req, res) {
+  ImageModel.findByIdAndDelete((req.body.id), 
+  function(err, data) {
+      if(err){
+          console.log(err);
+      }
+      else{
+          res.send(data);
+          console.log("Data Deleted!");
+      }
+  });  
 });
